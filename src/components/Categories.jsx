@@ -2,7 +2,7 @@ import React from 'react';
 
 const Categories = () => {
   const [pizzaIndex, setPizzaIndex] = React.useState(0);
-  const pizzaNames = ['Мясные', 'Вегетарианская', 'Гриль', 'Острые', 'Закрытые'];
+  const pizzaNames = ['Все', 'Мясные', 'Вегетарианская', 'Гриль', 'Острые', 'Закрытые'];
 
   return (
     <div className="categories">
