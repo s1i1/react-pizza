@@ -5,7 +5,7 @@ const Categories = () => {
   const pizzaNames = ['Мясные', 'Вегетарианская', 'Гриль', 'Острые', 'Закрытые'];
 
   return (
-    <div class="categories">
+    <div className="categories">
       <ul>
         {pizzaNames.map((pizza, i) => {
           return (
