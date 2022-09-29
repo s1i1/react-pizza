@@ -5,6 +5,7 @@ const Sort = () => {
   const [visibleSort, setVisibleSort] = React.useState(false);
 
   const sortNames = ['популярности', 'цене', 'алфавиту'];
+  const currentSort = sortNames[sortIndex];
 
   const onClickSortName = (index) => {
     setSortIndex(index);
@@ -26,7 +27,7 @@ const Sort = () => {
           />
         </svg>
         <b>Сортировка по:</b>
-        <span>популярности</span>
+        <span>{currentSort}</span>
       </div>
       {visibleSort && (
         <div className="sort__popup">
