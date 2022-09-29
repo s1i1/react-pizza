@@ -1,6 +1,10 @@
 import React from 'react';
 
 const Sort = () => {
+  const [sortIndex, setSortIndex] = React.useState(0);
+
+  const sortNames = ['популярности', 'цене', 'алфавиту'];
+
   return (
     <div className="sort">
       <div className="sort__label">
@@ -20,9 +24,16 @@ const Sort = () => {
       </div>
       <div className="sort__popup">
         <ul>
-          <li className="active">популярности</li>
-          <li>цене</li>
-          <li>алфавиту</li>
+          {sortNames.map((sortName, index) => {
+            return (
+              <li
+                key={sortName}
+                className={sortIndex === index ? 'active' : ''}
+                onClick={() => setSortIndex(index)}>
+                {sortName}
+              </li>
+            );
+          })}
         </ul>
       </div>
     </div>
