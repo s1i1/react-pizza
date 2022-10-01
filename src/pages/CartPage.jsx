@@ -3,7 +3,7 @@ import Cart from '../components/Cart';
 
 const CartPage = () => {
   return (
-    <div class="container container--cart">
+    <div className="container container--cart">
       <Cart />
     </div>
   );
