@@ -2,6 +2,7 @@ import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Header from './components/Header';
 import Home from './pages/Home';
+import Cart from './pages/Cart';
 import './scss/app.scss';
 
 function App() {
@@ -26,6 +27,7 @@ function App() {
             path="/"
             element={<Home pizzaData={pizzaData} PizzaIsLoading={PizzaIsLoading} />}
           />
+          <Route path="cart" element={<Cart />} />
         </Routes>
       </div>
     </div>
