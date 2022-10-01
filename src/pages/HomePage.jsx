@@ -4,7 +4,7 @@ import PizzaBlock from '../components/PizzaBlock';
 import EmptyPizzaBlock from '../components/PizzaBlock/EmptyPizzaBlock';
 import Sort from '../components/Sort';
 
-const Home = ({ pizzaData, PizzaIsLoading }) => {
+const HomePage = ({ pizzaData, PizzaIsLoading }) => {
   return (
     <div className="container">
       <div className="content__top">
@@ -25,4 +25,4 @@ const Home = ({ pizzaData, PizzaIsLoading }) => {
   );
 };
 
-export default Home;
+export default HomePage;

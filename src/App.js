@@ -1,8 +1,8 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Header from './components/Header';
-import Home from './pages/Home';
-import Cart from './pages/Cart';
+import HomePage from './pages/HomePage';
+import CartPage from './pages/CartPage';
 import './scss/app.scss';
 
 function App() {
@@ -25,9 +25,9 @@ function App() {
         <Routes>
           <Route
             path="/"
-            element={<Home pizzaData={pizzaData} PizzaIsLoading={PizzaIsLoading} />}
+            element={<HomePage pizzaData={pizzaData} PizzaIsLoading={PizzaIsLoading} />}
           />
-          <Route path="cart" element={<Cart />} />
+          <Route path="cart" element={<CartPage />} />
         </Routes>
       </div>
     </div>
