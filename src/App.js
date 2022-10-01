@@ -7,27 +7,12 @@ import NotFoundPage from './pages/NotFoundPage';
 import './scss/app.scss';
 
 function App() {
-  const [pizzaData, setPizzaData] = React.useState([]);
-  const [PizzaIsLoading, SetPizzaIsLoading] = React.useState(true);
-
-  React.useEffect(() => {
-    fetch('https://6335977cea0de5318a16db9b.mockapi.io/pizzaData')
-      .then((res) => res.json())
-      .then((data) => {
-        setPizzaData(data);
-        SetPizzaIsLoading(false);
-      });
-  }, []);
-
   return (
     <div className="wrapper">
       <Header />
       <div className="content">
         <Routes>
-          <Route
-            path="/"
-            element={<HomePage pizzaData={pizzaData} PizzaIsLoading={PizzaIsLoading} />}
-          />
+          <Route path="/" element={<HomePage />} />
           <Route path="cart" element={<CartPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
