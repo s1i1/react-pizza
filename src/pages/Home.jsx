@@ -6,7 +6,7 @@ import Sort from '../components/Sort';
 
 const Home = ({ pizzaData, PizzaIsLoading }) => {
   return (
-    <>
+    <div className="container">
       <div className="content__top">
         <Categories />
         <Sort />
@@ -21,7 +21,7 @@ const Home = ({ pizzaData, PizzaIsLoading }) => {
               return <PizzaBlock key={obj.name} {...obj} />;
             })}
       </div>
-    </>
+    </div>
   );
 };
 
