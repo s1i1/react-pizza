@@ -1,19 +1,15 @@
 import React from 'react';
 
-const Categories = () => {
-  const [pizzaIndex, setPizzaIndex] = React.useState(0);
+const Categories = ({ value, onClickCategory }) => {
   const pizzaNames = ['Все', 'Мясные', 'Вегетарианская', 'Гриль', 'Острые', 'Закрытые'];
 
   return (
     <div className="categories">
       <ul>
-        {pizzaNames.map((pizza, i) => {
+        {pizzaNames.map((pizzaName, i) => {
           return (
-            <li
-              className={pizzaIndex === i ? 'active' : ''}
-              key={i}
-              onClick={() => setPizzaIndex(i)}>
-              {pizza}
+            <li className={value === i ? 'active' : ''} key={i} onClick={() => onClickCategory(i)}>
+              {pizzaName}
             </li>
           );
         })}

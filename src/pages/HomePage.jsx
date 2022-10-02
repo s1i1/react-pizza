@@ -7,21 +7,24 @@ import Sort from '../components/Sort';
 const HomePage = () => {
   const [pizzaData, setPizzaData] = React.useState([]);
   const [PizzaIsLoading, SetPizzaIsLoading] = React.useState(true);
+  const [categoryIndex, setCategoryIndex] = React.useState(0);
 
   React.useEffect(() => {
-    fetch('https://6335977cea0de5318a16db9b.mockapi.io/pizzaData')
+    const category = categoryIndex > 0 ? `category=${categoryIndex}` : '';
+
+    fetch(`https://6335977cea0de5318a16db9b.mockapi.io/pizzaData?${category}`)
       .then((res) => res.json())
       .then((data) => {
         setPizzaData(data);
         SetPizzaIsLoading(false);
       });
     window.scrollTo(0, 0);
-  }, []);
+  }, [categoryIndex]);
 
   return (
     <div className="container">
       <div className="content__top">
-        <Categories />
+        <Categories value={categoryIndex} onClickCategory={setCategoryIndex} />
         <Sort />
       </div>
       <h2 className="content__title">Все пиццы</h2>
