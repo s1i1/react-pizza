@@ -27,6 +27,17 @@ body {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     column-gap: 35px;
+
+    @media(max-width:1375px) {
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+    @media(max-width: 1042px) {
+      grid-template-columns: 1fr 1fr;
+    }
+    @media(max-width: 717px) {
+      grid-template-columns: 1fr;
+      justify-items: center;
+    }
   }
 
   &__top {
