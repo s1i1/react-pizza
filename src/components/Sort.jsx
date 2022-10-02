@@ -1,7 +1,6 @@
 import React from 'react';
 
 const Sort = ({ sortObj, setSortObj }) => {
-  const [sortIndex, setSortIndex] = React.useState(0);
   const [visibleSort, setVisibleSort] = React.useState(false);
 
   const sortNames = [
@@ -14,7 +13,6 @@ const Sort = ({ sortObj, setSortObj }) => {
 
   const onClickSortName = (obj, index) => {
     setSortObj(obj);
-    setSortIndex(index);
     setVisibleSort(false);
   };
 
@@ -42,7 +40,7 @@ const Sort = ({ sortObj, setSortObj }) => {
               return (
                 <li
                   key={index}
-                  className={sortIndex === index ? 'active' : ''}
+                  className={obj.name === sortObj.name ? 'active' : ''}
                   onClick={() => onClickSortName(obj, index)}>
                   {obj.name}
                 </li>
