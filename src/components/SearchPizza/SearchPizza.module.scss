@@ -1,0 +1,25 @@
+.root {
+    position: relative;
+    text-align: center;
+    justify-content: center;
+    border: 1px solid rgb(163, 160, 160);
+    opacity: 0.5;
+    border-radius: 7px;
+    margin-left: -210px;
+
+    .input{
+        width: 400px;
+        height: 40px;
+        border: none;
+        font-size: 18px;
+        margin: 0 0 0 35px;
+    }
+    .search {
+        position: absolute;
+        top: 11px;
+        left: 0;
+        width: 17px;
+        height: 17px;
+        margin: 0 0 0 10px;
+    }
+}
