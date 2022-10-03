@@ -34,6 +34,14 @@ const HomePage = () => {
     window.scrollTo(0, 0);
   }, [categoryIndex, sortObj, searchValue]);
 
+  const renderEmpty = [...new Array(8)].map((_, index) => {
+    return <EmptyPizzaBlock key={index} />;
+  });
+
+  const renderContent = pizzaData.map((obj) => {
+    return <PizzaBlock key={obj.name} {...obj} />;
+  });
+
   return (
     <div className="container">
       <div className="content__top">
@@ -41,15 +49,7 @@ const HomePage = () => {
         <Sort sortObj={sortObj} setSortObj={setSortObj} />
       </div>
       <h2 className="content__title">Все пиццы</h2>
-      <div className="content__items">
-        {PizzaIsLoading
-          ? [...new Array(8)].map((_, index) => {
-              return <EmptyPizzaBlock key={index} />;
-            })
-          : pizzaData.map((obj) => {
-              return <PizzaBlock key={obj.name} {...obj} />;
-            })}
-      </div>
+      <div className="content__items">{PizzaIsLoading ? renderEmpty : renderContent}</div>
       <Pagination />
     </div>
   );
