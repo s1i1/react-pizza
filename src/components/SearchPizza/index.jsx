@@ -1,16 +1,24 @@
 import React from 'react';
 import searchIcon from '../../assets/img/search-icon.svg';
 import clearSearch from '../../assets/img/delete-icon.svg';
+import SearchContext from '../context/SearchContext';
 import styles from './SearchPizza.module.scss';
 
-const index = () => {
+const SearchPizza = () => {
+  const { searchValue, setSearchValue } = React.useContext(SearchContext);
+
   return (
     <div className={styles.root}>
-      <input className={styles.input} placeholder="Поиск пиццы..." />
+      <input
+        className={styles.input}
+        placeholder="Поиск пиццы..."
+        value={searchValue}
+        onChange={(e) => setSearchValue(e.target.value)}
+      />
       <img className={styles.search} src={searchIcon} alt="searchIcon" />
       <img className={styles.clear} src={clearSearch} alt="clearSearch" />
     </div>
   );
 };
 
-export default index;
+export default SearchPizza;
