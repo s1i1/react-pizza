@@ -1,9 +1,10 @@
 import React from 'react';
+import SearchContext from '../components/context/SearchContext';
 import Categories from '../components/Categories';
 import PizzaBlock from '../components/PizzaBlock';
 import EmptyPizzaBlock from '../components/PizzaBlock/EmptyPizzaBlock';
 import Sort from '../components/Sort';
-import SearchContext from '../components/context/SearchContext';
+import Pagination from '../components/Pagination';
 
 const HomePage = () => {
   const [pizzaData, setPizzaData] = React.useState([]);
@@ -49,6 +50,7 @@ const HomePage = () => {
               return <PizzaBlock key={obj.name} {...obj} />;
             })}
       </div>
+      <Pagination />
     </div>
   );
 };
