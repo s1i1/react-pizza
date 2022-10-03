@@ -16,7 +16,7 @@ const SearchPizza = () => {
         onChange={(e) => setSearchValue(e.target.value)}
       />
       <img className={styles.search} src={searchIcon} alt="searchIcon" />
-      <img className={styles.clear} src={clearSearch} alt="clearSearch" />
+      {searchValue && <img className={styles.clear} src={clearSearch} alt="clearSearch" />}
     </div>
   );
 };
