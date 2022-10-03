@@ -19,6 +19,7 @@
             cursor: pointer;
 
             &:hover {
+                transition: all 0.15s ease-in-out;
                 color: #fff;
                 background-color: #fe5f1e;
             }
