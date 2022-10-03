@@ -3,6 +3,7 @@ import Categories from '../components/Categories';
 import PizzaBlock from '../components/PizzaBlock';
 import EmptyPizzaBlock from '../components/PizzaBlock/EmptyPizzaBlock';
 import Sort from '../components/Sort';
+import SearchContext from '../components/context/SearchContext';
 
 const HomePage = () => {
   const [pizzaData, setPizzaData] = React.useState([]);
@@ -14,18 +15,23 @@ const HomePage = () => {
     order: 'desc',
   });
 
+  const { searchValue } = React.useContext(SearchContext);
+
   React.useEffect(() => {
     const sortBy = `sortBy=${sortObj.id}&order=${sortObj.order}`;
     const fillterByCategory = categoryIndex > 0 ? `&category=${categoryIndex}` : '';
+    const search = searchValue ? `&search=${searchValue}` : '';
 
-    fetch(`https://6335977cea0de5318a16db9b.mockapi.io/pizzaData?${sortBy}${fillterByCategory}`)
+    fetch(
+      `https://6335977cea0de5318a16db9b.mockapi.io/pizzaData?${sortBy}${fillterByCategory}${search}`,
+    )
       .then((res) => res.json())
       .then((data) => {
         setPizzaData(data);
         SetPizzaIsLoading(false);
       });
     window.scrollTo(0, 0);
-  }, [categoryIndex, sortObj]);
+  }, [categoryIndex, sortObj, searchValue]);
 
   return (
     <div className="container">
