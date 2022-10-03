@@ -15,16 +15,18 @@ const HomePage = () => {
     id: 'rating',
     order: 'desc',
   });
+  const [currentPage, setCurrentPage] = React.useState(1);
 
   const { searchValue } = React.useContext(SearchContext);
 
   React.useEffect(() => {
-    const sortBy = `sortBy=${sortObj.id}&order=${sortObj.order}`;
+    const page = `page=${currentPage}&limit=4`;
+    const sortBy = `&sortBy=${sortObj.id}&order=${sortObj.order}`;
     const fillterByCategory = categoryIndex > 0 ? `&category=${categoryIndex}` : '';
     const search = searchValue ? `&search=${searchValue}` : '';
 
     fetch(
-      `https://6335977cea0de5318a16db9b.mockapi.io/pizzaData?${sortBy}${fillterByCategory}${search}`,
+      `https://6335977cea0de5318a16db9b.mockapi.io/pizzaData?${page}${sortBy}${fillterByCategory}${search}`,
     )
       .then((res) => res.json())
       .then((data) => {
@@ -32,7 +34,7 @@ const HomePage = () => {
         SetPizzaIsLoading(false);
       });
     window.scrollTo(0, 0);
-  }, [categoryIndex, sortObj, searchValue]);
+  }, [categoryIndex, sortObj, searchValue, currentPage]);
 
   const renderEmpty = [...new Array(8)].map((_, index) => {
     return <EmptyPizzaBlock key={index} />;
@@ -50,7 +52,7 @@ const HomePage = () => {
       </div>
       <h2 className="content__title">Все пиццы</h2>
       <div className="content__items">{PizzaIsLoading ? renderEmpty : renderContent}</div>
-      <Pagination />
+      <Pagination onChangePage={setCurrentPage} />
     </div>
   );
 };
