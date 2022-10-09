@@ -1,8 +1,16 @@
 import React from 'react';
 import ReactPaginate from 'react-paginate';
+import { useDispatch } from 'react-redux';
+import { setCurrentPage } from '../../redux';
 import styles from './Pagination.module.scss';
 
-const Pagination = ({ onChangePage }) => {
+const Pagination = () => {
+  const dispatch = useDispatch();
+
+  const onChangePage = (pageNumber) => {
+    dispatch(setCurrentPage(pageNumber));
+  };
+
   return (
     <ReactPaginate
       className={styles.root}

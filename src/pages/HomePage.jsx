@@ -11,12 +11,12 @@ import Pagination from '../components/Pagination';
 const HomePage = () => {
   const { categoryIndex } = useSelector((state) => state.categories);
   const { sortObj } = useSelector((state) => state.sortPizza);
+  const { currentPage } = useSelector((state) => state.pagination);
+
+  const { searchValue } = React.useContext(SearchContext);
 
   const [pizzaData, setPizzaData] = React.useState([]);
   const [PizzaIsLoading, SetPizzaIsLoading] = React.useState(true);
-  const [currentPage, setCurrentPage] = React.useState(1);
-
-  const { searchValue } = React.useContext(SearchContext);
 
   React.useEffect(() => {
     const page = `page=${currentPage}&limit=4`;
@@ -52,7 +52,7 @@ const HomePage = () => {
       </div>
       <h2 className="content__title">Все пиццы</h2>
       <div className="content__items">{PizzaIsLoading ? renderEmpty : renderContent}</div>
-      <Pagination onChangePage={setCurrentPage} />
+      <Pagination />
     </div>
   );
 };
