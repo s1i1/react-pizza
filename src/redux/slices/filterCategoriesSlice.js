@@ -4,7 +4,7 @@ const initialState = {
   categoryIndex: 0,
 };
 
-const categoriesSlice = createSlice({
+const filterCategoriesSlice = createSlice({
   name: 'sortCategories',
   initialState,
   reducers: {
@@ -14,5 +14,5 @@ const categoriesSlice = createSlice({
   },
 });
 
-export const { setCategoryIndex } = categoriesSlice.actions;
-export default categoriesSlice.reducer;
+export const { setCategoryIndex } = filterCategoriesSlice.actions;
+export default filterCategoriesSlice.reducer;
