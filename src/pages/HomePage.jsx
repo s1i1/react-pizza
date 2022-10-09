@@ -12,14 +12,10 @@ const HomePage = () => {
   const dispatch = useDispatch();
 
   const { categoryIndex } = useSelector((state) => state.categories);
+  const { sortObj } = useSelector((state) => state.sortPizza);
 
   const [pizzaData, setPizzaData] = React.useState([]);
   const [PizzaIsLoading, SetPizzaIsLoading] = React.useState(true);
-  const [sortObj, setSortObj] = React.useState({
-    name: 'популярности',
-    id: 'rating',
-    order: 'desc',
-  });
   const [currentPage, setCurrentPage] = React.useState(1);
 
   const { searchValue } = React.useContext(SearchContext);
@@ -53,7 +49,7 @@ const HomePage = () => {
     <div className="container">
       <div className="content__top">
         <Categories value={categoryIndex} onClickCategory={(i) => dispatch(setCategoryIndex(i))} />
-        <Sort sortObj={sortObj} setSortObj={setSortObj} />
+        <Sort sortObj={sortObj} />
       </div>
       <h2 className="content__title">Все пиццы</h2>
       <div className="content__items">{PizzaIsLoading ? renderEmpty : renderContent}</div>

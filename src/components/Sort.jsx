@@ -1,6 +1,10 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
+import { setSortObj } from '../redux';
 
-const Sort = ({ sortObj, setSortObj }) => {
+const Sort = ({ sortObj }) => {
+  const dispatch = useDispatch();
+
   const [visibleSort, setVisibleSort] = React.useState(false);
 
   const sortNames = [
@@ -11,8 +15,8 @@ const Sort = ({ sortObj, setSortObj }) => {
     { name: 'алфавиту Я-А', id: 'name', order: 'asc' },
   ];
 
-  const onClickSortName = (obj, index) => {
-    setSortObj(obj);
+  const onClickSortName = (obj) => {
+    dispatch(setSortObj(obj));
     setVisibleSort(false);
   };
 
@@ -41,7 +45,7 @@ const Sort = ({ sortObj, setSortObj }) => {
                 <li
                   key={index}
                   className={obj.name === sortObj.name ? 'active' : ''}
-                  onClick={() => onClickSortName(obj, index)}>
+                  onClick={() => onClickSortName(obj)}>
                   {obj.name}
                 </li>
               );
