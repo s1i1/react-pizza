@@ -1,2 +1,2 @@
-export * from './slices/categoriesSlice';
+export * from './slices/filterCategoriesSlice';
 export * from './slices/sortPizzaSlice';
