@@ -1,7 +1,15 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
+import { setCategoryIndex } from '../redux';
 
-const Categories = ({ value, onClickCategory }) => {
+const Categories = ({ value }) => {
+  const dispatch = useDispatch();
+
   const pizzaNames = ['Все', 'Мясные', 'Вегетарианская', 'Гриль', 'Острые', 'Закрытые'];
+
+  const onClickCategory = (i) => {
+    dispatch(setCategoryIndex(i));
+  };
 
   return (
     <div className="categories">

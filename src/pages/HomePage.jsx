@@ -1,16 +1,13 @@
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import SearchContext from '../components/context/SearchContext';
 import Categories from '../components/Categories';
 import PizzaBlock from '../components/PizzaBlock';
 import EmptyPizzaBlock from '../components/PizzaBlock/EmptyPizzaBlock';
 import Sort from '../components/Sort';
 import Pagination from '../components/Pagination';
-import { setCategoryIndex } from '../redux';
 
 const HomePage = () => {
-  const dispatch = useDispatch();
-
   const { categoryIndex } = useSelector((state) => state.categories);
   const { sortObj } = useSelector((state) => state.sortPizza);
 
@@ -48,7 +45,7 @@ const HomePage = () => {
   return (
     <div className="container">
       <div className="content__top">
-        <Categories value={categoryIndex} onClickCategory={(i) => dispatch(setCategoryIndex(i))} />
+        <Categories value={categoryIndex} />
         <Sort sortObj={sortObj} />
       </div>
       <h2 className="content__title">Все пиццы</h2>
