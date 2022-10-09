@@ -6,10 +6,17 @@ import styles from './SearchPizza.module.scss';
 
 const SearchPizza = () => {
   const { searchValue, setSearchValue } = React.useContext(SearchContext);
+  const searchInputRef = React.useRef();
+
+  const onClearSearch = () => {
+    setSearchValue('');
+    searchInputRef.current.focus();
+  };
 
   return (
     <div className={styles.root}>
       <input
+        ref={searchInputRef}
         className={styles.input}
         placeholder="Поиск пиццы..."
         value={searchValue}
@@ -17,12 +24,7 @@ const SearchPizza = () => {
       />
       <img className={styles.search} src={searchIcon} alt="searchIcon" />
       {searchValue && (
-        <img
-          className={styles.clear}
-          src={clearSearch}
-          alt="clearSearch"
-          onClick={() => setSearchValue('')}
-        />
+        <img className={styles.clear} src={clearSearch} alt="clearSearch" onClick={onClearSearch} />
       )}
     </div>
   );
