@@ -1,5 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
+import axios from 'axios';
 import SearchContext from '../components/context/SearchContext';
 import Categories from '../components/Categories';
 import PizzaBlock from '../components/PizzaBlock';
@@ -23,14 +24,15 @@ const HomePage = () => {
     const fillterByCategory = categoryIndex > 0 ? `&category=${categoryIndex}` : '';
     const search = searchValue ? `&search=${searchValue}` : '';
 
-    fetch(
-      `https://6335977cea0de5318a16db9b.mockapi.io/pizzaData?${page}${sortBy}${fillterByCategory}${search}`,
-    )
-      .then((res) => res.json())
-      .then((data) => {
+    axios
+      .get(
+        `https://6335977cea0de5318a16db9b.mockapi.io/pizzaData?${page}${sortBy}${fillterByCategory}${search}`,
+      )
+      .then(({ data }) => {
         setPizzaData(data);
         SetPizzaIsLoading(false);
       });
+
     window.scrollTo(0, 0);
   }, [categoryIndex, sortObj, searchValue, currentPage]);
 
