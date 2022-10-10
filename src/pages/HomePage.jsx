@@ -21,13 +21,13 @@ const HomePage = () => {
   React.useEffect(() => {
     const page = `page=${currentPage}&limit=4`;
     const sortBy = `&sortBy=${sortObj.id}&order=${sortObj.order}`;
-    const fillterByCategory = categoryIndex > 0 ? `&category=${categoryIndex}` : '';
+    const filterByCategory = categoryIndex > 0 ? `&category=${categoryIndex}` : '';
     const search = searchValue ? `&search=${searchValue}` : '';
 
-    dispatch(fetchPizzas({ page, sortBy, fillterByCategory, search }));
+    dispatch(fetchPizzas({ page, sortBy, filterByCategory, search }));
 
     window.scrollTo(0, 0);
-  }, [categoryIndex, sortObj, searchValue, currentPage]);
+  }, [categoryIndex, sortObj, searchValue, currentPage, dispatch]);
 
   const renderEmpty = [...new Array(8)].map((_, index) => {
     return <EmptyPizzaBlock key={index} />;
