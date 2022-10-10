@@ -1,6 +1,6 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
-import axios from 'axios';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchPizzas } from '../redux';
 import SearchContext from '../components/context/SearchContext';
 import Categories from '../components/Categories';
 import PizzaBlock from '../components/PizzaBlock';
@@ -9,14 +9,14 @@ import Sort from '../components/Sort';
 import Pagination from '../components/Pagination';
 
 const HomePage = () => {
+  const dispatch = useDispatch();
+
   const { categoryIndex } = useSelector((state) => state.categories);
   const { sortObj } = useSelector((state) => state.sortPizza);
   const { currentPage } = useSelector((state) => state.pagination);
+  const { pizzaData, status } = useSelector((state) => state.pizzasData);
 
   const { searchValue } = React.useContext(SearchContext);
-
-  const [pizzaData, setPizzaData] = React.useState([]);
-  const [PizzaIsLoading, SetPizzaIsLoading] = React.useState(true);
 
   React.useEffect(() => {
     const page = `page=${currentPage}&limit=4`;
@@ -24,16 +24,7 @@ const HomePage = () => {
     const fillterByCategory = categoryIndex > 0 ? `&category=${categoryIndex}` : '';
     const search = searchValue ? `&search=${searchValue}` : '';
 
-    const getPizzas = async () => {
-      const { data } = await axios.get(
-        `https://6335977cea0de5318a16db9b.mockapi.io/pizzaData?${page}${sortBy}${fillterByCategory}${search}`,
-      );
-
-      setPizzaData(data);
-      SetPizzaIsLoading(false);
-    };
-
-    getPizzas();
+    dispatch(fetchPizzas({ page, sortBy, fillterByCategory, search }));
 
     window.scrollTo(0, 0);
   }, [categoryIndex, sortObj, searchValue, currentPage]);
@@ -53,7 +44,7 @@ const HomePage = () => {
         <Sort sortObj={sortObj} />
       </div>
       <h2 className="content__title">Все пиццы</h2>
-      <div className="content__items">{PizzaIsLoading ? renderEmpty : renderContent}</div>
+      <div className="content__items">{status === 'loading' ? renderEmpty : renderContent}</div>
       <Pagination />
     </div>
   );
