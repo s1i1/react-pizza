@@ -24,14 +24,16 @@ const HomePage = () => {
     const fillterByCategory = categoryIndex > 0 ? `&category=${categoryIndex}` : '';
     const search = searchValue ? `&search=${searchValue}` : '';
 
-    axios
-      .get(
+    const getPizzas = async () => {
+      const { data } = await axios.get(
         `https://6335977cea0de5318a16db9b.mockapi.io/pizzaData?${page}${sortBy}${fillterByCategory}${search}`,
-      )
-      .then(({ data }) => {
-        setPizzaData(data);
-        SetPizzaIsLoading(false);
-      });
+      );
+
+      setPizzaData(data);
+      SetPizzaIsLoading(false);
+    };
+
+    getPizzas();
 
     window.scrollTo(0, 0);
   }, [categoryIndex, sortObj, searchValue, currentPage]);
