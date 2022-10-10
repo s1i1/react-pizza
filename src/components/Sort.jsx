@@ -7,6 +7,24 @@ const Sort = ({ sortObj }) => {
 
   const [visibleSort, setVisibleSort] = React.useState(false);
 
+  const labelRef = React.useRef();
+
+  React.useEffect(() => {
+    const closePopup = (e) => {
+      const target = e.target.parentNode;
+      const refCurrent = labelRef.current;
+
+      if (refCurrent && target !== refCurrent) {
+        setVisibleSort(false);
+      }
+    };
+
+    document.body.addEventListener('click', closePopup);
+    return () => {
+      document.body.removeEventListener('click', closePopup);
+    };
+  }, []);
+
   const sortNames = [
     { name: 'популярности', id: 'rating', order: 'desc' },
     { name: 'цене (сначала дорогие)', id: 'price', order: 'desc' },
@@ -22,7 +40,7 @@ const Sort = ({ sortObj }) => {
 
   return (
     <div className="sort">
-      <div className="sort__label" onClick={() => setVisibleSort(!visibleSort)}>
+      <div ref={labelRef} className="sort__label" onClick={() => setVisibleSort(!visibleSort)}>
         <svg
           width="10"
           height="6"
