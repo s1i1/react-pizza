@@ -29,8 +29,8 @@ const Sort = ({ sortObj }) => {
     { name: 'популярности', id: 'rating', order: 'desc' },
     { name: 'цене (сначала дорогие)', id: 'price', order: 'desc' },
     { name: 'цене (сначала дешевые)', id: 'price', order: 'asc' },
-    { name: 'алфавиту А-Я', id: 'name', order: 'desc' },
-    { name: 'алфавиту Я-А', id: 'name', order: 'asc' },
+    { name: 'алфавиту А-Я', id: 'name', order: 'asc' },
+    { name: 'алфавиту Я-А', id: 'name', order: 'desc' },
   ];
 
   const onClickSortName = (obj) => {
