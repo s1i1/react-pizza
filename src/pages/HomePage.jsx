@@ -1,7 +1,6 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchPizzas } from '../redux';
-import SearchContext from '../components/context/SearchContext';
 import Categories from '../components/Categories';
 import PizzaBlock from '../components/PizzaBlock';
 import EmptyPizzaBlock from '../components/PizzaBlock/EmptyPizzaBlock';
@@ -15,8 +14,7 @@ const HomePage = () => {
   const { sortObj } = useSelector((state) => state.sortPizza);
   const { currentPage } = useSelector((state) => state.pagination);
   const { pizzaData, status } = useSelector((state) => state.pizzasData);
-
-  const { searchValue } = React.useContext(SearchContext);
+  const { searchValue } = useSelector((state) => state.searchPizza);
 
   React.useEffect(() => {
     const page = `page=${currentPage}&limit=4`;

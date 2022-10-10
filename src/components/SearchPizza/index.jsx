@@ -1,26 +1,27 @@
 import React from 'react';
 import debounce from 'lodash.debounce';
+import { useDispatch } from 'react-redux';
 import searchIcon from '../../assets/img/search-icon.svg';
 import clearSearch from '../../assets/img/delete-icon.svg';
-import SearchContext from '../context/SearchContext';
+import { setSearchValue } from '../../redux';
 import styles from './SearchPizza.module.scss';
 
 const SearchPizza = () => {
-  const { setSearchValue } = React.useContext(SearchContext);
+  const dispatch = useDispatch();
 
   const [value, setValue] = React.useState('');
 
   const searchInputRef = React.useRef();
 
   const onClearSearch = () => {
-    setSearchValue('');
+    dispatch(setSearchValue(''));
     setValue('');
     searchInputRef.current.focus();
   };
 
   const inputDebounce = React.useCallback(
     debounce((str) => {
-      setSearchValue(str);
+      dispatch(setSearchValue(str));
     }, 250),
     [],
   );
