@@ -14,6 +14,7 @@ const CartItem = ({ count, currentSize, currentType, imageUrl, name, price, id, 
   };
 
   const onClickMinus = () => {
+    count <= 1 && dispatch(deletePizza(id));
     dispatch(decrementItemCount(id));
   };
 
