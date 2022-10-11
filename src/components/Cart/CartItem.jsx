@@ -1,23 +1,20 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { incrementItemCount, decrementItemCount, setTotal, deletePizza } from '../../redux';
+import { incrementItemCount, decrementItemCount, deletePizza } from '../../redux';
 
 const CartItem = ({ count, currentSize, currentType, imageUrl, name, price, id, ...props }) => {
   const dispatch = useDispatch();
 
   const onClickDelete = () => {
     dispatch(deletePizza(id));
-    dispatch(setTotal());
   };
 
   const onClickPlus = () => {
     dispatch(incrementItemCount(id));
-    dispatch(setTotal());
   };
 
   const onClickMinus = () => {
     dispatch(decrementItemCount(id));
-    dispatch(setTotal());
   };
 
   return (

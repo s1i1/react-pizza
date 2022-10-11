@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { setCartItems, incrementItemCount, filterCartItems, setTotal } from '../../redux';
+import { setCartItems, incrementItemCount, filterCartItems } from '../../redux';
 
 const PizzaBlock = ({ imageUrl, name, price, sizes, types, id, ...props }) => {
   const dispatch = useDispatch();
@@ -30,7 +30,6 @@ const PizzaBlock = ({ imageUrl, name, price, sizes, types, id, ...props }) => {
     dispatch(setCartItems(obj));
     dispatch(incrementItemCount(obj.id));
     dispatch(filterCartItems(obj.id));
-    dispatch(setTotal());
   };
 
   return (
