@@ -1,12 +1,22 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { setTotal, deletePizza } from '../../redux';
+import { incrementItemCount, decrementItemCount, setTotal, deletePizza } from '../../redux';
 
 const CartItem = ({ count, currentSize, currentType, imageUrl, name, price, id, ...props }) => {
   const dispatch = useDispatch();
 
   const onClickDelete = () => {
     dispatch(deletePizza(id));
+    dispatch(setTotal());
+  };
+
+  const onClickPlus = () => {
+    dispatch(incrementItemCount(id));
+    dispatch(setTotal());
+  };
+
+  const onClickMinus = () => {
+    dispatch(decrementItemCount(id));
     dispatch(setTotal());
   };
 
@@ -22,7 +32,9 @@ const CartItem = ({ count, currentSize, currentType, imageUrl, name, price, id, 
         </p>
       </div>
       <div className="cart__item-count">
-        <div className="button button--outline button--circle cart__item-count-minus">
+        <div
+          className="button button--outline button--circle cart__item-count-minus"
+          onClick={onClickMinus}>
           <svg
             width="10"
             height="10"
@@ -40,7 +52,9 @@ const CartItem = ({ count, currentSize, currentType, imageUrl, name, price, id, 
           </svg>
         </div>
         <b>{count}</b>
-        <div className="button button--outline button--circle cart__item-count-plus">
+        <div
+          className="button button--outline button--circle cart__item-count-plus"
+          onClick={onClickPlus}>
           <svg
             width="10"
             height="10"

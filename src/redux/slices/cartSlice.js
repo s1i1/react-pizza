@@ -20,6 +20,13 @@ const cartSlice = createSlice({
         }
       });
     },
+    decrementItemCount(state, action) {
+      state.cartItems.map((item) => {
+        if (item.id === action.payload) {
+          item.count--;
+        }
+      });
+    },
     filterCartItems(state) {
       state.cartItems = state.cartItems.filter(
         (item, index, array) => array.findIndex((obj) => obj.id === item.id) === index,
@@ -48,6 +55,7 @@ const cartSlice = createSlice({
 export const {
   setCartItems,
   incrementItemCount,
+  decrementItemCount,
   filterCartItems,
   setTotal,
   clearPizzas,
