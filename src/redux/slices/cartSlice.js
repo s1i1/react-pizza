@@ -25,7 +25,7 @@ const cartSlice = createSlice({
         (item, index, array) => array.findIndex((obj) => obj.id === item.id) === index,
       );
     },
-    setTotalPrice(state) {
+    setTotal(state) {
       state.totalPrice = state.cartItems.reduce((prev, curr) => {
         return prev + curr.price * curr.count;
       }, 0);
@@ -37,6 +37,5 @@ const cartSlice = createSlice({
   },
 });
 
-export const { setCartItems, incrementItemCount, filterCartItems, setTotalPrice } =
-  cartSlice.actions;
+export const { setCartItems, incrementItemCount, filterCartItems, setTotal } = cartSlice.actions;
 export default cartSlice.reducer;
