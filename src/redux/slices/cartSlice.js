@@ -34,8 +34,14 @@ const cartSlice = createSlice({
         return prev + curr.count;
       }, 0);
     },
+    clearPizzas(state) {
+      state.cartItems = [];
+      state.totalPrice = 0;
+      state.totalPizzas = 0;
+    },
   },
 });
 
-export const { setCartItems, incrementItemCount, filterCartItems, setTotal } = cartSlice.actions;
+export const { setCartItems, incrementItemCount, filterCartItems, setTotal, clearPizzas } =
+  cartSlice.actions;
 export default cartSlice.reducer;

@@ -1,6 +1,10 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
+import { clearPizzas } from '../../redux';
 
 const CartTop = () => {
+  const dispatch = useDispatch();
+
   return (
     <div className="cart__top">
       <h2 className="content__title">
@@ -34,7 +38,7 @@ const CartTop = () => {
         </svg>
         Корзина
       </h2>
-      <div className="cart__clear">
+      <div className="cart__clear" onClick={() => dispatch(clearPizzas())}>
         <svg
           width="20"
           height="20"
