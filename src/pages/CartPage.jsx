@@ -8,7 +8,7 @@ const CartPage = () => {
 
   return (
     <div className="container container--cart">
-      {cartItems.length > 0 ? <Cart /> : <EmptyCart />}
+      {cartItems.length > 0 ? <Cart cartItems={cartItems} /> : <EmptyCart />}
     </div>
   );
 };

@@ -1,12 +1,9 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
 import CartTop from './CartTop';
 import CartItem from './CartItem';
 import CartBottom from './CartBottom';
 
-export const Cart = () => {
-  const { cartItems } = useSelector((state) => state.cart);
-
+export const Cart = ({ cartItems }) => {
   return (
     <div className="cart">
       <CartTop />
