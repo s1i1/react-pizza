@@ -1,10 +1,11 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
+import { selectCart } from '../redux';
 import Cart from '../components/Cart/index';
 import EmptyCart from '../components/Cart/EmptyCart';
 
 const CartPage = () => {
-  const { cartItems } = useSelector((state) => state.cart);
+  const { cartItems } = useSelector(selectCart);
 
   return (
     <div className="container container--cart">

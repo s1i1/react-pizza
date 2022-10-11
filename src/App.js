@@ -1,7 +1,7 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { setTotal } from './redux';
+import { setTotal, selectCart } from './redux';
 import Header from './components/Header';
 import HomePage from './pages/HomePage';
 import CartPage from './pages/CartPage';
@@ -10,7 +10,7 @@ import './scss/app.scss';
 
 function App() {
   const dispatch = useDispatch();
-  const { cartItems } = useSelector((state) => state.cart);
+  const { cartItems } = useSelector(selectCart);
 
   React.useEffect(() => {
     dispatch(setTotal());

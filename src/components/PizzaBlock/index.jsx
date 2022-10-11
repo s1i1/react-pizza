@@ -1,11 +1,11 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { setCartItems, incrementItemCount, filterCartItems } from '../../redux';
+import { selectCart, setCartItems, incrementItemCount, filterCartItems } from '../../redux';
 
 const PizzaBlock = ({ imageUrl, name, price, sizes, types, id, ...props }) => {
   const dispatch = useDispatch();
 
-  const { cartItems } = useSelector((state) => state.cart);
+  const { cartItems } = useSelector(selectCart);
 
   const [sizeIndex, setSizeIndex] = React.useState(0);
   const [typeIndex, setTypeIndex] = React.useState(0);
