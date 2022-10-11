@@ -39,7 +39,7 @@ const PizzaBlock = ({ imageUrl, name, price, sizes, types, id, ...props }) => {
 
     dispatch(setCartItems(obj));
     dispatch(incrementItemCount(obj.id));
-    dispatch(filterCartItems(obj.id));
+    dispatch(filterCartItems(obj));
   };
 
   return (

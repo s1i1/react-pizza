@@ -28,8 +28,16 @@ const cartSlice = createSlice({
       });
     },
     filterCartItems(state) {
+      const findIndexCallback = (obj, item) => {
+        const id = obj.id === item.id;
+        const types = obj.currentType === item.currentType;
+        const sizes = obj.currentSize === item.currentSize;
+
+        return id && types && sizes;
+      };
+
       state.cartItems = state.cartItems.filter(
-        (item, index, array) => array.findIndex((obj) => obj.id === item.id) === index,
+        (item, index, array) => array.findIndex((obj) => findIndexCallback(obj, item)) === index,
       );
     },
     setTotal(state) {
