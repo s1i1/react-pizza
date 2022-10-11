@@ -4,6 +4,7 @@ import sortPizzaSlice from './slices/sortPizzaSlice';
 import paginationSlice from './slices/paginationSlice';
 import pizzasDataSlice from './slices/pizzasDataSlice';
 import searchPizzaSlice from './slices/searchPizzaSlice';
+import cartSlice from './slices/cartSlice';
 
 export const store = configureStore({
   reducer: {
@@ -12,5 +13,6 @@ export const store = configureStore({
     pagination: paginationSlice,
     pizzasData: pizzasDataSlice,
     searchPizza: searchPizzaSlice,
+    cart: cartSlice,
   },
 });
