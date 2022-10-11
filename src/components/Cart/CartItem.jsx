@@ -1,6 +1,15 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
+import { setTotal, deletePizza } from '../../redux';
 
-const CartItem = ({ count, currentSize, currentType, imageUrl, name, price, ...props }) => {
+const CartItem = ({ count, currentSize, currentType, imageUrl, name, price, id, ...props }) => {
+  const dispatch = useDispatch();
+
+  const onClickDelete = () => {
+    dispatch(deletePizza(id));
+    dispatch(setTotal());
+  };
+
   return (
     <div className="cart__item">
       <div className="cart__item-img">
@@ -53,7 +62,7 @@ const CartItem = ({ count, currentSize, currentType, imageUrl, name, price, ...p
         <b>{price} ₽</b>
       </div>
       <div className="cart__item-remove">
-        <div className="button button--outline button--circle">
+        <div className="button button--outline button--circle" onClick={onClickDelete}>
           <svg
             width="10"
             height="10"

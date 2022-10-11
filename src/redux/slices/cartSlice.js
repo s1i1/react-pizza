@@ -39,9 +39,18 @@ const cartSlice = createSlice({
       state.totalPrice = 0;
       state.totalPizzas = 0;
     },
+    deletePizza(state, action) {
+      state.cartItems = state.cartItems.filter((item) => item.id !== action.payload);
+    },
   },
 });
 
-export const { setCartItems, incrementItemCount, filterCartItems, setTotal, clearPizzas } =
-  cartSlice.actions;
+export const {
+  setCartItems,
+  incrementItemCount,
+  filterCartItems,
+  setTotal,
+  clearPizzas,
+  deletePizza,
+} = cartSlice.actions;
 export default cartSlice.reducer;
