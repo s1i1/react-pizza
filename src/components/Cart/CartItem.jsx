@@ -6,16 +6,16 @@ const CartItem = ({ count, currentSize, currentType, imageUrl, name, price, id, 
   const dispatch = useDispatch();
 
   const onClickDelete = () => {
-    dispatch(deletePizza(id));
+    dispatch(deletePizza({ id, currentType, currentSize }));
   };
 
   const onClickPlus = () => {
-    dispatch(incrementItemCount(id));
+    dispatch(incrementItemCount({ id, currentType, currentSize }));
   };
 
   const onClickMinus = () => {
-    count <= 1 && dispatch(deletePizza(id));
-    dispatch(decrementItemCount(id));
+    count <= 1 && dispatch(deletePizza({ id, currentType, currentSize }));
+    dispatch(decrementItemCount({ id, currentType, currentSize }));
   };
 
   return (
