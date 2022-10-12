@@ -6,6 +6,14 @@ const initialState = {
   totalPizzas: 0,
 };
 
+const isCurrentObj = (obj, item) => {
+  const IDs = obj.id === item.id;
+  const types = obj.currentType === item.currentType;
+  const sizes = obj.currentSize === item.currentSize;
+
+  return IDs && types && sizes;
+};
+
 const cartSlice = createSlice({
   name: 'cartPizzas',
   initialState,
@@ -15,29 +23,21 @@ const cartSlice = createSlice({
     },
     incrementItemCount(state, action) {
       state.cartItems.map((item) => {
-        if (item.id === action.payload) {
+        if (isCurrentObj(action.payload, item)) {
           item.count++;
         }
       });
     },
     decrementItemCount(state, action) {
       state.cartItems.map((item) => {
-        if (item.id === action.payload) {
+        if (isCurrentObj(action.payload, item)) {
           item.count--;
         }
       });
     },
     filterCartItems(state) {
-      const findIndexCallback = (obj, item) => {
-        const id = obj.id === item.id;
-        const types = obj.currentType === item.currentType;
-        const sizes = obj.currentSize === item.currentSize;
-
-        return id && types && sizes;
-      };
-
       state.cartItems = state.cartItems.filter(
-        (item, index, array) => array.findIndex((obj) => findIndexCallback(obj, item)) === index,
+        (item, index, array) => array.findIndex((obj) => isCurrentObj(obj, item)) === index,
       );
     },
     setTotal(state) {
@@ -55,7 +55,9 @@ const cartSlice = createSlice({
       state.totalPizzas = 0;
     },
     deletePizza(state, action) {
-      state.cartItems = state.cartItems.filter((item) => item.id !== action.payload);
+      state.cartItems = state.cartItems.filter((item, index, array) =>
+        array.findIndex((obj) => isCurrentObj(action.payload, item)),
+      );
     },
   },
 });
