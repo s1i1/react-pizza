@@ -8,7 +8,8 @@ export const Cart = ({ cartItems }) => {
     <div className="cart">
       <CartTop />
       {cartItems.map((obj) => {
-        return <CartItem key={obj.id} {...obj} />;
+        const key = `${obj.id}${obj.currentType}${obj.currentSize}`;
+        return <CartItem key={key} {...obj} />;
       })}
       <CartBottom />
     </div>
