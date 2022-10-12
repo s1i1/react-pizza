@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectCart, setCartItems, incrementItemCount, filterCartItems } from '../../redux';
+import { selectCart, setCartItems, filterCartItems } from '../../redux';
 
 const PizzaBlock = ({ imageUrl, name, price, sizes, types, id, ...props }) => {
   const dispatch = useDispatch();
@@ -12,12 +12,15 @@ const PizzaBlock = ({ imageUrl, name, price, sizes, types, id, ...props }) => {
   const [count, setCount] = React.useState(0);
 
   React.useEffect(() => {
+    let newCount = 0;
+
     cartItems.map((item) => {
-      if (item.id === id) {
-        return setCount(item.count);
+      if (item.id == id) {
+        newCount += item.count;
       }
     });
-  }, []);
+    setCount(newCount);
+  }, [cartItems]);
 
   const pizzaType = ['тонкое', 'традиционное'];
 
@@ -32,13 +35,10 @@ const PizzaBlock = ({ imageUrl, name, price, sizes, types, id, ...props }) => {
       price: price,
       currentType: currentType,
       currentSize: currentSize,
-      count: count,
+      count: 1,
     };
 
-    setCount(count + 1);
-
     dispatch(setCartItems(obj));
-    dispatch(incrementItemCount(obj.id));
     dispatch(filterCartItems(obj));
   };
 
