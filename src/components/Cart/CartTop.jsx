@@ -5,6 +5,12 @@ import { clearPizzas } from '../../redux';
 const CartTop = () => {
   const dispatch = useDispatch();
 
+  const onClearPizzas = () => {
+    if (window.confirm('Вы действительно хотите очистить корзину?')) {
+      dispatch(clearPizzas());
+    }
+  };
+
   return (
     <div className="cart__top">
       <h2 className="content__title">
@@ -38,7 +44,7 @@ const CartTop = () => {
         </svg>
         Корзина
       </h2>
-      <div className="cart__clear" onClick={() => dispatch(clearPizzas())}>
+      <div className="cart__clear" onClick={onClearPizzas}>
         <svg
           width="20"
           height="20"
