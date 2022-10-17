@@ -6,7 +6,7 @@ type SortItem = {
   order: string;
 };
 
-interface SortState {
+export interface SortState {
   sortObj: SortItem;
 }
 

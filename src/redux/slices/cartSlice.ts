@@ -17,7 +17,7 @@ type CartItem = {
   price: number;
 };
 
-interface CartSliceState {
+export interface CartSliceState {
   cartItems: CartItem[];
   totalPrice: number;
   totalPizzas: number;

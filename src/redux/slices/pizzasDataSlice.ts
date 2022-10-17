@@ -18,7 +18,7 @@ type PizzasData = {
   types: number[];
 };
 
-interface PizzaDataState {
+export interface PizzaDataState {
   pizzaData: PizzasData[];
   status: string;
   error: string;
