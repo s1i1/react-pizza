@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import NotFoundPage from '../../assets/img/404-error.png';
 
-const NotFound = () => {
+const NotFound: React.FC = () => {
   return (
     <div className="cart cart--empty">
       <img
@@ -11,7 +11,7 @@ const NotFound = () => {
         style={{ marginTop: '0px', marginBottom: '0px' }}
       />
       <h2>
-        Страница не найдена <icon>😕</icon>
+        Страница не найдена <span>😕</span>
       </h2>
       <p>
         Вернитесь на главную страницу

@@ -4,10 +4,10 @@ import { useDispatch } from 'react-redux';
 import { setCurrentPage } from '../../redux';
 import styles from './Pagination.module.scss';
 
-const Pagination = () => {
+const Pagination: React.FC = () => {
   const dispatch = useDispatch();
 
-  const onChangePage = (pageNumber) => {
+  const onChangePage = (pageNumber: number) => {
     dispatch(setCurrentPage(pageNumber));
   };
 
@@ -20,7 +20,6 @@ const Pagination = () => {
       pageRangeDisplayed={5}
       pageCount={3}
       previousLabel="<"
-      renderOnZeroPageCount={null}
     />
   );
 };

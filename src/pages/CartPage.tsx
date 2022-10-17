@@ -4,7 +4,7 @@ import { selectCart } from '../redux';
 import Cart from '../components/Cart/index';
 import EmptyCart from '../components/Cart/EmptyCart';
 
-const CartPage = () => {
+const CartPage: React.FC = () => {
   const { cartItems } = useSelector(selectCart);
 
   return (

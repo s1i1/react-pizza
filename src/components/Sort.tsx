@@ -2,20 +2,33 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import { setSortObj } from '../redux';
 
-const Sort = ({ sortObj }) => {
+type PropItems = {
+  name: string;
+  id: string;
+  order: string;
+};
+
+type SortProps = {
+  sortObj: PropItems;
+};
+
+const Sort: React.FC<SortProps> = ({ sortObj }) => {
   const dispatch = useDispatch();
 
   const [visibleSort, setVisibleSort] = React.useState(false);
 
-  const labelRef = React.useRef();
+  const labelRef = React.useRef<HTMLDivElement>(null);
 
   React.useEffect(() => {
-    const closePopup = (e) => {
-      const target = e.target.parentNode;
-      const refCurrent = labelRef.current;
+    const closePopup = (e: MouseEvent) => {
+      if (e.target instanceof Element) {
+        const target = e.target.parentNode;
 
-      if (refCurrent && target !== refCurrent) {
-        setVisibleSort(false);
+        const refCurrent = labelRef.current;
+
+        if (refCurrent && target !== refCurrent) {
+          setVisibleSort(false);
+        }
       }
     };
 
@@ -33,7 +46,7 @@ const Sort = ({ sortObj }) => {
     { name: 'алфавиту Я-А', id: 'name', order: 'desc' },
   ];
 
-  const onClickSortName = (obj) => {
+  const onClickSortName = (obj: PropItems) => {
     dispatch(setSortObj(obj));
     setVisibleSort(false);
   };
