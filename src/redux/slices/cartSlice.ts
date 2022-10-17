@@ -1,12 +1,35 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { RootState } from '../store';
 
-const initialState = {
+type CurrentItem = {
+  id: string;
+  currentType: string;
+  currentSize: number;
+};
+
+type CartItem = {
+  count: number;
+  currentSize: number;
+  currentType: string;
+  id: string;
+  imageUrl: string;
+  name: string;
+  price: number;
+};
+
+export interface CartSliceState {
+  cartItems: CartItem[];
+  totalPrice: number;
+  totalPizzas: number;
+}
+
+const initialState: CartSliceState = {
   cartItems: [],
   totalPrice: 0,
   totalPizzas: 0,
 };
 
-const isCurrentObj = (obj, item) => {
+const isCurrentObj = (obj: CurrentItem, item: CartItem) => {
   const IDs = obj.id === item.id;
   const types = obj.currentType === item.currentType;
   const sizes = obj.currentSize === item.currentSize;
@@ -18,17 +41,17 @@ const cartSlice = createSlice({
   name: 'cartPizzas',
   initialState,
   reducers: {
-    setCartItems(state, action) {
+    setCartItems(state, action: PayloadAction<CartItem>) {
       state.cartItems.push(action.payload);
     },
-    incrementItemCount(state, action) {
+    incrementItemCount(state, action: PayloadAction<CurrentItem>) {
       state.cartItems.map((item) => {
         if (isCurrentObj(action.payload, item)) {
           item.count++;
         }
       });
     },
-    decrementItemCount(state, action) {
+    decrementItemCount(state, action: PayloadAction<CurrentItem>) {
       state.cartItems.map((item) => {
         if (isCurrentObj(action.payload, item)) {
           item.count--;
@@ -54,15 +77,15 @@ const cartSlice = createSlice({
       state.totalPrice = 0;
       state.totalPizzas = 0;
     },
-    deletePizza(state, action) {
-      state.cartItems = state.cartItems.filter((item, index, array) =>
-        array.findIndex((obj) => isCurrentObj(action.payload, item)),
+    deletePizza(state, action: PayloadAction<CurrentItem>) {
+      state.cartItems = state.cartItems.filter((item, _, array) =>
+        array.findIndex(() => isCurrentObj(action.payload, item)),
       );
     },
   },
 });
 
-export const selectCart = (state) => state.cart;
+export const selectCart = (state: RootState) => state.cart;
 
 export const {
   setCartItems,

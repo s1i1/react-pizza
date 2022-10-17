@@ -23,8 +23,8 @@ const PizzaBlock: React.FC<PizzaBlockProps> = ({ imageUrl, name, price, sizes, t
   React.useEffect(() => {
     let newCount = 0;
 
-    cartItems.map((item: any) => {
-      if (item.id == id) {
+    cartItems.map((item) => {
+      if (item.id === id) {
         newCount += item.count;
       }
     });

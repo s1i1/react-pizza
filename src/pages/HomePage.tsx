@@ -1,5 +1,5 @@
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useAppDispatch, useAppSelector } from '../hooks';
 import { fetchPizzas } from '../redux';
 import Categories from '../components/Categories';
 import PizzaBlock from '../components/PizzaBlock';
@@ -7,14 +7,14 @@ import EmptyPizzaBlock from '../components/PizzaBlock/EmptyPizzaBlock';
 import Sort from '../components/Sort';
 import Pagination from '../components/Pagination';
 
-const HomePage = () => {
-  const dispatch = useDispatch();
+const HomePage: React.FC = () => {
+  const dispatch = useAppDispatch();
 
-  const { categoryIndex } = useSelector((state) => state.categories);
-  const { sortObj } = useSelector((state) => state.sortPizza);
-  const { currentPage } = useSelector((state) => state.pagination);
-  const { pizzaData, status } = useSelector((state) => state.pizzasData);
-  const { searchValue } = useSelector((state) => state.searchPizza);
+  const { categoryIndex } = useAppSelector((state) => state.categories);
+  const { sortObj } = useAppSelector((state) => state.sortPizza);
+  const { currentPage } = useAppSelector((state) => state.pagination);
+  const { pizzaData, status } = useAppSelector((state) => state.pizzasData);
+  const { searchValue } = useAppSelector((state) => state.searchPizza);
 
   React.useEffect(() => {
     const page = `page=${currentPage}&limit=4`;

@@ -1,6 +1,10 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-const initialState = {
+export interface FilterState {
+  categoryIndex: number;
+}
+
+const initialState: FilterState = {
   categoryIndex: 0,
 };
 
@@ -8,7 +12,7 @@ const filterCategoriesSlice = createSlice({
   name: 'sortCategories',
   initialState,
   reducers: {
-    setCategoryIndex(state, action) {
+    setCategoryIndex(state, action: PayloadAction<number>) {
       state.categoryIndex = action.payload;
     },
   },
