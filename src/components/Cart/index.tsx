@@ -3,7 +3,21 @@ import CartTop from './CartTop';
 import CartItem from './CartItem';
 import CartBottom from './CartBottom';
 
-export const Cart = ({ cartItems }) => {
+type PropItems = {
+  count: number;
+  currentSize: number;
+  currentType: string;
+  id: string;
+  imageUrl: string;
+  name: string;
+  price: number;
+};
+
+type CartProps = {
+  cartItems: PropItems[];
+};
+
+export const Cart: React.FC<CartProps> = ({ cartItems }) => {
   return (
     <div className="cart">
       <CartTop />
