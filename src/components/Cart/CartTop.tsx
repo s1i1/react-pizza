@@ -2,7 +2,7 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import { clearPizzas } from '../../redux';
 
-const CartTop = () => {
+const CartTop: React.FC = () => {
   const dispatch = useDispatch();
 
   const onClearPizzas = () => {
