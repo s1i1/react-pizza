@@ -1,6 +1,16 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-const initialState = {
+type SortItem = {
+  name: string;
+  id: string;
+  order: string;
+};
+
+interface SortState {
+  sortObj: SortItem;
+}
+
+const initialState: SortState = {
   sortObj: {
     name: 'популярности',
     id: 'rating',
@@ -12,7 +22,7 @@ export const sortPizzaSlice = createSlice({
   name: 'sortPizza',
   initialState,
   reducers: {
-    setSortObj(state, action) {
+    setSortObj(state, action: PayloadAction<SortItem>) {
       state.sortObj = action.payload;
     },
   },
