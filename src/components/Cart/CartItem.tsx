@@ -2,7 +2,25 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import { incrementItemCount, decrementItemCount, deletePizza } from '../../redux';
 
-const CartItem = ({ count, currentSize, currentType, imageUrl, name, price, id, ...props }) => {
+type CartProps = {
+  count: number;
+  currentSize: number;
+  currentType: string;
+  imageUrl: string;
+  name: string;
+  price: number;
+  id: string;
+};
+
+const CartItem: React.FC<CartProps> = ({
+  count,
+  currentSize,
+  currentType,
+  imageUrl,
+  name,
+  price,
+  id,
+}) => {
   const dispatch = useDispatch();
 
   const onClickDelete = () => {
