@@ -2,12 +2,16 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import { setCategoryIndex } from '../redux';
 
-const Categories = ({ value }) => {
+type CategoriesProps = {
+  value: number;
+};
+
+const Categories: React.FC<CategoriesProps> = ({ value }) => {
   const dispatch = useDispatch();
 
   const pizzaNames = ['Все', 'Мясные', 'Вегетарианская', 'Гриль', 'Острые', 'Закрытые'];
 
-  const onClickCategory = (i) => {
+  const onClickCategory = (i: number) => {
     dispatch(setCategoryIndex(i));
   };
 
