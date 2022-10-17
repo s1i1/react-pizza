@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import NotFoundPage from '../../assets/img/404-error.png';
 
-const NotFound = () => {
+const NotFound: React.FC = () => {
   return (
     <div className="cart cart--empty">
       <img

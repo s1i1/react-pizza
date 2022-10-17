@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 import { setCurrentPage } from '../../redux';
 import styles from './Pagination.module.scss';
 
-const Pagination = () => {
+const Pagination: React.FC = () => {
   const dispatch = useDispatch();
 
   const onChangePage = (pageNumber: number) => {
