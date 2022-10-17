@@ -10,7 +10,7 @@
 - **Redux Toolkit**
 - **React Router v6**
 - **Axios**
-- **React Hooks** (хуки)
+- **React Hooks**
 - CSS-Modules / SCSS
 - React Content Loader
 - React Pagination
