@@ -11,7 +11,7 @@ const NotFound = () => {
         style={{ marginTop: '0px', marginBottom: '0px' }}
       />
       <h2>
-        Страница не найдена <icon>😕</icon>
+        Страница не найдена <span>😕</span>
       </h2>
       <p>
         Вернитесь на главную страницу
