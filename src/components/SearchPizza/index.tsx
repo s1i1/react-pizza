@@ -6,7 +6,7 @@ import clearSearch from '../../assets/img/delete-icon.svg';
 import { setSearchValue } from '../../redux';
 import styles from './SearchPizza.module.scss';
 
-const SearchPizza = () => {
+const SearchPizza: React.FC = () => {
   const dispatch = useDispatch();
 
   const [value, setValue] = React.useState('');
