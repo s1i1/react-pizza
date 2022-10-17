@@ -2,7 +2,16 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectCart, setCartItems, filterCartItems } from '../../redux';
 
-const PizzaBlock = ({ imageUrl, name, price, sizes, types, id, ...props }) => {
+type PizzaBlockProps = {
+  imageUrl: string;
+  name: string;
+  price: number;
+  sizes: number[];
+  types: number[];
+  id: string;
+};
+
+const PizzaBlock: React.FC<PizzaBlockProps> = ({ imageUrl, name, price, sizes, types, id }) => {
   const dispatch = useDispatch();
 
   const { cartItems } = useSelector(selectCart);
@@ -14,7 +23,7 @@ const PizzaBlock = ({ imageUrl, name, price, sizes, types, id, ...props }) => {
   React.useEffect(() => {
     let newCount = 0;
 
-    cartItems.map((item) => {
+    cartItems.map((item: any) => {
       if (item.id == id) {
         newCount += item.count;
       }
@@ -39,7 +48,7 @@ const PizzaBlock = ({ imageUrl, name, price, sizes, types, id, ...props }) => {
     };
 
     dispatch(setCartItems(obj));
-    dispatch(filterCartItems(obj));
+    dispatch(filterCartItems());
   };
 
   return (
