@@ -11,12 +11,12 @@ const SearchPizza = () => {
 
   const [value, setValue] = React.useState('');
 
-  const searchInputRef = React.useRef();
+  const searchInputRef = React.useRef<HTMLInputElement>(null);
 
   const onClearSearch = () => {
     dispatch(setSearchValue(''));
     setValue('');
-    searchInputRef.current.focus();
+    searchInputRef.current?.focus();
   };
 
   const inputDebounce = React.useCallback(
@@ -26,7 +26,7 @@ const SearchPizza = () => {
     [],
   );
 
-  const onChangeInput = (e) => {
+  const onChangeInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     setValue(e.target.value);
 
     inputDebounce(e.target.value);
